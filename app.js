@@ -1,54 +1,55 @@
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
+
 var timerId;
+
+$( document ).ready(function() {
+  	drow(0);
+	MathJax.Hub.Config({
+	  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+	});
+});
 
 var state = false;
 
 function StartStop() {
 	if(state){
-		state = false;
-		startBtn.value = "Start";
 		stop();
 	}
 	else{
-		drow();
 		state = true;
 		startBtn.value = "Stop";
-		var A0 = 100;
-		var g = 9.81;
 		var t = 0;
 		timerId = setInterval(function() {
-			t++;
-			drow(f(A0, x, t, g));
-			ifImmobility();
+			t+=0.1;
+			drow(f(t));
 		}, 100);
 	}
 	
 }
 
-function f(A0, x, t, g){
-	var w = Math.sqrt(k.value / m.value);
-	x.value = mu.value * (( m.value * g ) / k.value ) + (A0 - ( mu.value * (( m.value * g ) / k.value ))) * Math.sin( w * t);
-	return x.value;
+function f(t){
+	a.value = A0.value * Math.exp(Beta()*t)*Math.cos(Omega()*t);
+	return -a.value;
 }
 
-function ifImmobility(){
-	var g = 9.81;
-	var F1 = k.value * x.value;
-	var F2 = mu.value * m.value * g;
-	console.log(F1,F2);
-	return F1===F2;
+function Omega(){
+	omega.value = Math.sqrt(k.value*m.value);
+	return -omega.value;
+}
 
+function Beta(){
+	beta.value = (r.value)/(2*m.value);
+	return -beta.value;
 }
 
 
 function stop(){
+	state = false;
+	startBtn.value = "Start";
 	clearInterval(timerId);
 }
 
-
 function drow(width){
+	width+=200;
 	if (width > 500) return;
 
 	var canvas = document.getElementById("myCanvas");
@@ -57,8 +58,8 @@ function drow(width){
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context.beginPath();
 	context.moveTo(0, 0);
-	context.lineTo(0, 300);
-	context.lineTo(500, 300);
+	context.lineTo(0, 200);
+	context.lineTo(500, 200);
 	fillRect(context,width);
 	context.stroke();
 
@@ -77,6 +78,5 @@ function drow(width){
 }
 
 function fillRect(context,width){
-
 	context.fillRect(width, 100, 100, 100);
 }

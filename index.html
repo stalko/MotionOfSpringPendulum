@@ -11,31 +11,49 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h1>$$x(t) = \mu {mg \over k} + (A_0 - \mu{mg \over k} )cos (\omega t) $$</h1>
+			<h1>$$A = A_0 e^{- \beta t} cos (\omega t) $$</h1>
 		    <div class="col-md-8">
+
+		    	<label>$$\omega = \sqrt{k \over m} $$</label>
+		    	<br>
+		    	<label>$$\beta = {r \over {2 m}} $$</label>
+		    	<br/>
 		    	<canvas id="myCanvas" width="500" height="300" style="border:1px solid #d3d3d3;"></canvas>
 		    </div>
 		    <div class="col-md-4">
-
-		    	<label>$$\omega = \sqrt{k \over m} $$</label>
 		    	<div class="form-group">
-		    		<label for="usr" style="display: block;text-align: right;">$$\mu$$</label>
-		    		<input type="text" class="form-control" id="mu" name="mu" value="12">
+		    		<label for="usr" style="display: block;text-align: left;">$$r$$</label>
+		    		<input type="text" class="form-control" id="r" name="r" value="0.1">
 				</div>
 
 				<div class="form-group">
-		    		<label for="usr" style="display: block;text-align: right;">$$m$$</label>
+		    		<label for="usr" style="display: block;text-align: left;">$$m$$</label>
 		    		<input type="text" class="form-control" id="m" name="m" value="1">
 				</div>
 
 				<div class="form-group">
-		    		<label for="usr" style="display: block;text-align: right;">$$k$$</label>
+		    		<label for="usr" style="display: block;text-align: left;">$$k$$</label>
 		    		<input type="text" class="form-control" id="k" name="k" value="1">
 				</div>
 
 				<div class="form-group">
-		    		<label for="usr" style="display: block;text-align: right;">$$x$$</label>
-		    		<input type="text" class="form-control" id="x" name="x" readonly>
+		    		<label for="usr" style="display: block;text-align: left;">$$A_0$$</label>
+		    		<input type="text" class="form-control" id="A0" name="A0" value="100">
+				</div>
+
+				<div class="form-group">
+		    		<label for="usr" style="display: block;text-align: left;">$$\omega$$</label>
+		    		<input type="text" class="form-control" id="omega" name="omega" readonly>
+				</div>
+
+				<div class="form-group">
+		    		<label for="usr" style="display: block;text-align: left;">$$\beta$$</label>
+		    		<input type="text" class="form-control" id="beta" name="beta" readonly>
+				</div>
+
+				<div class="form-group">
+		    		<label for="usr" style="display: block;text-align: left;">$$A$$</label>
+		    		<input type="text" class="form-control" id="a" name="a" readonly>
 				</div>
 
 				<input type="button" name="startBtn" id="startBtn" class="btn btn-primary" value="Start" style="width: 100%" onclick="StartStop()">
