@@ -5,6 +5,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js'></script>
 	<script src="./app.js"></script>
 	<title>The motion of a spring pendulum</title>
 </head>
@@ -14,11 +16,13 @@
 			<h1>$$A = A_0 e^{- \beta t} cos (\omega t) $$</h1>
 		    <div class="col-md-8">
 
-		    	<label>$$\omega = \sqrt{k \over m} $$</label>
+		    	<label>$$\omega = \sqrt{k g S\over m} $$</label>
 		    	<br>
 		    	<label>$$\beta = {r \over {2 m}} $$</label>
 		    	<br/>
 		    	<canvas id="myCanvas" width="500" height="300" style="border:1px solid #d3d3d3;"></canvas>
+		    	<br>
+		    	<canvas id="myChart" width="300" height="300"></canvas>
 		    </div>
 		    <div class="col-md-4">
 		    	<div class="form-group">

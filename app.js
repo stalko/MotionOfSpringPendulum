@@ -3,9 +3,11 @@ var timerId;
 
 $( document ).ready(function() {
   	drow(0);
+  	showCharts();
 	MathJax.Hub.Config({
 	  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 	});
+
 });
 
 var state = false;
@@ -32,7 +34,7 @@ function f(t){
 }
 
 function Omega(){
-	omega.value = Math.sqrt(k.value*m.value);
+	omega.value = Math.sqrt(k.value * 10/m.value);
 	return -omega.value;
 }
 
@@ -79,4 +81,28 @@ function drow(width){
 
 function fillRect(context,width){
 	context.fillRect(width, 100, 100, 100);
+}
+
+function showCharts(){
+	var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+	        datasets: [{
+	            label: '# of Votes',
+	            data: [12, 19, 3, 5, 2, 3],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero:true
+	                }
+	            }]
+	        }
+	    }
+	});
 }
